@@ -24,7 +24,7 @@ export const CompareDalog = (props: CompareDialogPropsType) => {
                 <Flex alignItems="start" direction="row" width="single-line-width">
                 {
                   comparedBreeds.map((breed: BreedType, idx: number) => (
-                    <BreedCardColumn breed={breed} idx={idx} keyIndicator="CompareDialog" />))}
+                    <BreedCardColumn breed={breed} idx={idx} key={`${breed.id}_BreedCardColumn`} keyIndicator="CompareDialog" />))}
                 </Flex>
               </Content>
             </Dialog>

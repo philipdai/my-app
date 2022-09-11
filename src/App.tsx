@@ -36,7 +36,7 @@ function App() {
         <Flex direction="row" gap="size-100" justifyContent="left" wrap>
           {
             breeds.map((breed, idx) => (
-              <BreedCard breed={breed} comparedBreedIds={comparedBreedIds} toggleSelect={toggleSelect} key={idx} idx={idx}/>
+              <BreedCard breed={breed} comparedBreedIds={comparedBreedIds} toggleSelect={toggleSelect} key={`${breed.id}_breedcard`} idx={idx}/>
             ))
           }
         </Flex>

@@ -46,6 +46,9 @@ export const BreedCard = (props: any) => {
                 <Text>Origin</Text>
                 <Text>{ breed.origin }</Text>
               </div>
+              <Flex height="100%" width="100%">
+                <Image src={breed.image.url} alt={breed.name} objectFit="cover" />
+              </Flex>
             </Content>
             <Footer>
               <Checkbox isSelected={ comparedBreedIds.includes(breed.id) } isDisabled>

@@ -9,7 +9,7 @@ export const CompareDalog = (props: any) => {
         {(close) => {
           const comparedBreeds = breeds.filter((b: any) => comparedBreedIds.includes(b.id));
           return (
-            <Dialog>
+            <Dialog size="L">
               <Heading>
                 <Flex alignItems="center" gap="size-100">
                   <Text>
@@ -19,12 +19,12 @@ export const CompareDalog = (props: any) => {
               </Heading>
               <Divider />
               <Content>
-                <Flex alignItems="start" gap="size-100" direction="row" width="single-line-width">
+                <Flex alignItems="start" direction="row" width="single-line-width">
                 {
                   comparedBreeds.map((breed: any, idx: number) => (
                     <div key={breed.id + '_' + idx}>
                       <div className='row'>
-                        <Text>Bred Name</Text>
+                        <Text UNSAFE_className="label">Bred Name</Text>
                         <div>{ breed.name }</div>
                       </div>
                       <div className='row'>
@@ -33,23 +33,23 @@ export const CompareDalog = (props: any) => {
                         </Flex>
                       </div>
                       <div className='row'>
-                        <Text>Bred For</Text>
+                        <Text UNSAFE_className="label">Bred For</Text>
                         <div>{ breed.bred_for }</div>
                       </div>
                       <div className='row'>
-                        <Text>Bred Group</Text>
+                        <Text UNSAFE_className="label">Bred Group</Text>
                         <div>{ breed.bred_group }</div>
                       </div>
                       <div className='row'>
-                        <Text>Life Span</Text>
+                        <Text UNSAFE_className="label">Life Span</Text>
                         <div>{ breed.life_span }</div>
                       </div>
                       <div className='row'>
-                        <Text>Temperament</Text>
+                        <Text UNSAFE_className="label">Temperament</Text>
                         <div>{ breed.temperament }</div>
                       </div>
                       <div className='row'>
-                        <Text>Origin</Text>
+                        <Text UNSAFE_className="label">Origin</Text>
                         <div>{ breed.origin }</div>
                       </div>
                     </div>))}

@@ -4,7 +4,7 @@ export const CompareDalog = (props: any) => {
   const { breeds, comparedBreedIds } = props;
   return (
     <DialogTrigger isDismissable>
-        <ActionButton>Show Compared Breeds</ActionButton>
+        <ActionButton isDisabled={comparedBreedIds.length <= 1}>Show Compared Breeds</ActionButton>
         {(close) => {
           const comparedBreeds = breeds.filter((b: any) => comparedBreedIds.includes(b.id));
           return (

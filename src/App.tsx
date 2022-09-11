@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { defaultTheme, Text, Flex, Provider, View, Image, Button, DialogTrigger, ActionButton, ButtonGroup, Checkbox, Content, Dialog, Divider, Footer, Heading } from '@adobe/react-spectrum';
+import React from 'react';
+import { fetchBreeds } from './services';
+import { BreedCard, CompareDalog } from './components';
 
 function App() {
+  const [ breeds, setBreeds ] = React.useState([] as any[]);
+  const [ comparedBreedIds, setComparedBreedIds ] = React.useState([] as any[]);
+  const getBreeds = async () => {
+    const breedsFetched = await fetchBreeds();
+    setBreeds(breedsFetched);
+  }
+
+  React.useEffect(() => {
+    getBreeds();
+   }, []);
+
+  const toggleSelect = (breedId: any) => {
+    const copyComparedBreedIds = [...comparedBreedIds];
+    
+    const foundIdx = comparedBreedIds.findIndex(id => id === breedId);
+    if (foundIdx !== -1) {
+      copyComparedBreedIds.splice(foundIdx, 1);
+    } else {
+      copyComparedBreedIds.push(breedId);
+    }
+    setComparedBreedIds(copyComparedBreedIds);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider theme={defaultTheme}>
+      <div className='App'>
+        <CompareDalog breeds={breeds} comparedBreedIds={comparedBreedIds} />
+        <Flex direction="row" gap="size-100" justifyContent="left" wrap>
+          {
+            breeds.map((breed, idx) => (
+              <BreedCard breed={breed} comparedBreedIds={comparedBreedIds} toggleSelect={toggleSelect} key={idx} />
+            ))
+          }
+        </Flex>
+      </div>
+    </Provider>
   );
 }
 

@@ -1,14 +1,15 @@
 import './CompareDialog.css';
-import { DialogTrigger, ActionButton, Dialog, Heading, Flex, Divider, Text, Image, TableView, TableHeader, Column, TableBody, Row, Cell, Content } from "@adobe/react-spectrum";
+import { DialogTrigger, ActionButton, Dialog, Heading, Flex, Divider, Text, Content } from "@adobe/react-spectrum";
 import { BreedCardColumn } from '../BreedCardColumn';
+import { BreedType, CompareDialogPropsType } from '../../types';
 
-export const CompareDalog = (props: any) => {
+export const CompareDalog = (props: CompareDialogPropsType) => {
   const { breeds, comparedBreedIds } = props;
   return (
     <DialogTrigger isDismissable>
         <ActionButton isDisabled={comparedBreedIds.length <= 1} margin="40px">Show Compared Breeds</ActionButton>
         {(close) => {
-          const comparedBreeds = breeds.filter((b: any) => comparedBreedIds.includes(b.id));
+          const comparedBreeds = breeds.filter((breed: BreedType) => comparedBreedIds.includes(breed.id));
           return (
             <Dialog size="L">
               <Heading>
@@ -22,7 +23,7 @@ export const CompareDalog = (props: any) => {
               <Content>
                 <Flex alignItems="start" direction="row" width="single-line-width">
                 {
-                  comparedBreeds.map((breed: any, idx: number) => (
+                  comparedBreeds.map((breed: BreedType, idx: number) => (
                     <BreedCardColumn breed={breed} idx={idx} keyIndicator="CompareDialog" />))}
                 </Flex>
               </Content>

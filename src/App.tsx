@@ -3,10 +3,11 @@ import { defaultTheme, Flex, Provider } from '@adobe/react-spectrum';
 import React from 'react';
 import { fetchBreeds } from './services';
 import { BreedCard, CompareDalog } from './components';
+import { BreedType } from './types';
 
 function App() {
-  const [ breeds, setBreeds ] = React.useState([] as any[]);
-  const [ comparedBreedIds, setComparedBreedIds ] = React.useState([] as any[]);
+  const [ breeds, setBreeds ] = React.useState([] as BreedType[]);
+  const [ comparedBreedIds, setComparedBreedIds ] = React.useState([] as number[]);
   const getBreeds = async () => {
     const breedsFetched = await fetchBreeds();
     setBreeds(breedsFetched);
@@ -16,7 +17,7 @@ function App() {
     getBreeds();
    }, []);
 
-  const toggleSelect = (breedId: any) => {
+  const toggleSelect = (breedId: number) => {
     const copyComparedBreedIds = [...comparedBreedIds];
     
     const foundIdx = comparedBreedIds.findIndex(id => id === breedId);
@@ -35,7 +36,7 @@ function App() {
         <Flex direction="row" gap="size-100" justifyContent="left" wrap>
           {
             breeds.map((breed, idx) => (
-              <BreedCard breed={breed} comparedBreedIds={comparedBreedIds} toggleSelect={toggleSelect} key={idx} />
+              <BreedCard breed={breed} comparedBreedIds={comparedBreedIds} toggleSelect={toggleSelect} key={idx} idx={idx}/>
             ))
           }
         </Flex>

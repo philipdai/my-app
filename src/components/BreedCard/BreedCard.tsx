@@ -1,8 +1,9 @@
 import './BreedCard.css';
 import { Flex, View, Checkbox, DialogTrigger, ActionButton, Dialog, Heading, Divider, Content, Footer, ButtonGroup, Button, Image, Text } from "@adobe/react-spectrum";
 import { BreedCardColumn } from '../BreedCardColumn';
+import { BreedCardPropsType } from '../../types/BreedTypes';
 
-export const BreedCard = (props: any) => {
+export const BreedCard = (props: BreedCardPropsType) => {
   const { breed, comparedBreedIds, toggleSelect, idx } = props;
   return (
     <Flex direction='column'  key={breed.name}>

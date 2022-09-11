@@ -1,0 +1,9 @@
+.row {
+  height: 100px;
+  width: 300px;
+  border:1px gray solid;
+}
+
+.label {
+  font-weight: bold;
+}

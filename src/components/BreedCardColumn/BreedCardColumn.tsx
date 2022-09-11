@@ -1,7 +1,9 @@
+import './BreedCardColumn.css';
 import { Flex, Text, Image } from "@adobe/react-spectrum";
+import { BreedCardColumnPropsType } from "../../types";
 
-export const BreedCardColumn = (props: any) => {
-  const { breed, idx=0, keyIndicator='' } = props;
+export const BreedCardColumn = (props: BreedCardColumnPropsType) => {
+  const { breed, idx, keyIndicator } = props;
   return (
   <div key={`${breed.id}_${keyIndicator}_${idx}`}>
     <div className='row'>
@@ -19,7 +21,7 @@ export const BreedCardColumn = (props: any) => {
     </div>
     <div className='row'>
       <Text UNSAFE_className="label">Bred Group</Text>
-      <div>{ breed.bred_group }</div>
+      <div>{ breed.breed_group }</div>
     </div>
     <div className='row'>
       <Text UNSAFE_className="label">Life Span</Text>

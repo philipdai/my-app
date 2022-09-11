@@ -1,7 +1,9 @@
+import './BreedCard.css';
 import { Flex, View, Checkbox, DialogTrigger, ActionButton, Dialog, Heading, Divider, Content, Footer, ButtonGroup, Button, Image, Text } from "@adobe/react-spectrum";
+import { BreedCardColumn } from '../BreedCardColumn';
 
 export const BreedCard = (props: any) => {
-  const { breed, comparedBreedIds, toggleSelect } = props;
+  const { breed, comparedBreedIds, toggleSelect, idx } = props;
   return (
     <Flex direction='column'  key={breed.name}>
       <View height="size-600" width="size-1600">
@@ -26,29 +28,7 @@ export const BreedCard = (props: any) => {
             </Heading>
             <Divider />
             <Content>
-              <div>
-                <Text>Bred For</Text>
-                <Text>{ breed.bred_for }</Text>
-              </div>
-              <div>
-                <Text>Bred Group</Text>
-                <Text>{ breed.bred_group }</Text>
-              </div>
-              <div>
-                <Text>Life Span</Text>
-                <Text>{ breed.life_span }</Text>
-              </div>
-              <div>
-                <Text>Temperament</Text>
-                <Text>{ breed.temperament }</Text>
-              </div>
-              <div>
-                <Text>Origin</Text>
-                <Text>{ breed.origin }</Text>
-              </div>
-              <Flex height="100%" width="100%">
-                <Image src={breed.image.url} alt={breed.name} objectFit="cover" />
-              </Flex>
+              <BreedCardColumn breed={breed} idx={idx} keyIndicator="BreedCard"/>
             </Content>
             <Footer>
               <Checkbox isSelected={ comparedBreedIds.includes(breed.id) } isDisabled>

@@ -1,3 +1,1 @@
-import { CompareDalog } from './CompareDialog';
-
-export { CompareDalog };
+export { CompareDalog } from './CompareDialog';

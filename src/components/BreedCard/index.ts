@@ -1,3 +1,1 @@
-import { BreedCard  } from "./BreedCard";
-
-export { BreedCard };
+export { BreedCard  } from "./BreedCard";

@@ -1,0 +1,1 @@
+export { BreedCardColumn } from './BreedCardColumn';

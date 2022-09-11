@@ -11,7 +11,7 @@ export const CompareDalog = (props: CompareDialogPropsType) => {
         {(close) => {
           const comparedBreeds = breeds.filter((breed: BreedType) => comparedBreedIds.includes(breed.id));
           return (
-            <Dialog size="L">
+            <Dialog minWidth="1600px">
               <Heading>
                 <Flex alignItems="center" gap="size-100">
                   <Text>

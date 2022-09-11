@@ -13,7 +13,7 @@ export const BreedCard = (props: BreedCardPropsType) => {
       <Flex height="100%" width="120px">
         <Image src={breed.image.url} alt={breed.name} objectFit="cover" />
       </Flex>
-      <Checkbox isSelected={ comparedBreedIds.includes(breed.id) } isDisabled>
+      <Checkbox isSelected={ comparedBreedIds.includes(breed.id) }  isDisabled={comparedBreedIds.length > 4 && !comparedBreedIds.includes(breed.id)} onChange={() => { toggleSelect(breed.id) }}>
         { comparedBreedIds.includes(breed.id) ? 'Selected' : 'Unselected'}
       </Checkbox>
       <DialogTrigger isDismissable>
@@ -32,11 +32,11 @@ export const BreedCard = (props: BreedCardPropsType) => {
               <BreedCardColumn breed={breed} idx={idx} keyIndicator="BreedCard"/>
             </Content>
             <Footer>
-              <Checkbox isSelected={ comparedBreedIds.includes(breed.id) } isDisabled>
+              <Checkbox isSelected={ comparedBreedIds.includes(breed.id) } isDisabled={comparedBreedIds.length > 4 && !comparedBreedIds.includes(breed.id)} onChange={() => { toggleSelect(breed.id) }}>
                 Select to compare
               </Checkbox>
               <ButtonGroup>
-                <Button variant="secondary" onPress={() => toggleSelect(breed.id)} isDisabled={comparedBreedIds.length > 4 && !comparedBreedIds.includes(breed.id)}>{comparedBreedIds.includes(breed.id) ? 'Unselect' : 'Select'}</Button> 
+                {/* <Button variant="secondary" onPress={() => toggleSelect(breed.id)} isDisabled={comparedBreedIds.length > 4 && !comparedBreedIds.includes(breed.id)}>{comparedBreedIds.includes(breed.id) ? 'Unselect' : 'Select'}</Button>  */}
                 <Button variant="primary" onPress={close}>Close</Button>
               </ButtonGroup>
             </Footer>

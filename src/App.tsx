@@ -1,5 +1,5 @@
 import './App.css';
-import { defaultTheme, Text, Flex, Provider, View, Image, Button, DialogTrigger, ActionButton, ButtonGroup, Checkbox, Content, Dialog, Divider, Footer, Heading } from '@adobe/react-spectrum';
+import { defaultTheme, Flex, Provider } from '@adobe/react-spectrum';
 import React from 'react';
 import { fetchBreeds } from './services';
 import { BreedCard, CompareDalog } from './components';

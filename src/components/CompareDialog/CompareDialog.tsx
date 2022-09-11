@@ -1,4 +1,5 @@
-import { DialogTrigger, ActionButton, Dialog, Heading, Flex, Divider, Text } from "@adobe/react-spectrum";
+import './CompareDialog.css';
+import { DialogTrigger, ActionButton, Dialog, Heading, Flex, Divider, Text, Image, TableView, TableHeader, Column, TableBody, Row, Cell, Content } from "@adobe/react-spectrum";
 
 export const CompareDalog = (props: any) => {
   const { breeds, comparedBreedIds } = props;
@@ -17,33 +18,43 @@ export const CompareDalog = (props: any) => {
                 </Flex>
               </Heading>
               <Divider />
-              <Flex alignItems="start" gap="size-100" direction="row" width="single-line-width">
+              <Content>
+                <Flex alignItems="start" gap="size-100" direction="row" width="single-line-width">
                 {
                   comparedBreeds.map((breed: any, idx: number) => (
                     <div key={breed.id + '_' + idx}>
-                      <div>
+                      <div className='row'>
+                        <Text>Bred Name</Text>
+                        <div>{ breed.name }</div>
+                      </div>
+                      <div className='row'>
+                        <Flex height="100%" width="100%">
+                          <Image src={breed.image.url} alt={breed.name} objectFit="cover" />
+                        </Flex>
+                      </div>
+                      <div className='row'>
                         <Text>Bred For</Text>
-                        <Text>{ breed.bred_for }</Text>
+                        <div>{ breed.bred_for }</div>
                       </div>
-                      <div>
+                      <div className='row'>
                         <Text>Bred Group</Text>
-                        <Text>{ breed.bred_group }</Text>
+                        <div>{ breed.bred_group }</div>
                       </div>
-                      <div>
+                      <div className='row'>
                         <Text>Life Span</Text>
-                        <Text>{ breed.life_span }</Text>
+                        <div>{ breed.life_span }</div>
                       </div>
-                      <div>
+                      <div className='row'>
                         <Text>Temperament</Text>
-                        <Text>{ breed.temperament }</Text>
+                        <div>{ breed.temperament }</div>
                       </div>
-                      <div>
+                      <div className='row'>
                         <Text>Origin</Text>
-                        <Text>{ breed.origin }</Text>
+                        <div>{ breed.origin }</div>
                       </div>
-                    </div>))
-                }
-              </Flex>
+                    </div>))}
+                </Flex>
+              </Content>
             </Dialog>
           );
         }}

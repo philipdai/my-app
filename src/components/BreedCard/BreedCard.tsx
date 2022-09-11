@@ -36,11 +36,10 @@ export const BreedCard = (props: BreedCardPropsType) => {
                 Select to compare
               </Checkbox>
               <ButtonGroup>
-                <Button variant="secondary" onPress={() => toggleSelect(breed.id)}>{comparedBreedIds.includes(breed.id) ? 'Unselect' : 'Select'}</Button> 
+                <Button variant="secondary" onPress={() => toggleSelect(breed.id)} isDisabled={comparedBreedIds.length > 4}>{comparedBreedIds.includes(breed.id) ? 'Unselect' : 'Select'}</Button> 
                 <Button variant="primary" onPress={close}>Close</Button>
               </ButtonGroup>
             </Footer>
-            
           </Dialog>
         )}
       </DialogTrigger>

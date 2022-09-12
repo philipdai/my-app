@@ -1,11 +1,36 @@
 import './BreedCardColumn.css';
-import { Flex, Text, Image } from "@adobe/react-spectrum";
+import { Flex, Text, Image, Divider } from "@adobe/react-spectrum";
 import { BreedCardColumnPropsType } from "../../types";
 
 export const BreedCardColumn = (props: BreedCardColumnPropsType) => {
   const { breed, idx, keyIndicator } = props;
+
+  if (keyIndicator === 'BreedCard') {
+    return (
+      <Flex direction="column" gap="size-125" alignContent="center" key={breed.id} flex="1">
+        <Text>Bred Name: {breed.name}</Text>
+        <Divider size="S" />
+        <Text>Height: {breed.height.metric}</Text>
+        <Divider size="S" />
+        <Text>Weight: {breed.weight.metric}</Text>
+        <Divider size="S" />
+        <Text>Bred For: {breed.bred_for}</Text>
+        <Divider size="S" />
+        <Text>Life Span: {breed.life_span}</Text>
+        <Divider size="S" />
+        <Text>Origin: {breed.origin}</Text>
+        <Divider size="S" />
+        <Text>Temperament: {breed.temperament}</Text>
+        <Divider size="S" />
+        <Text>Bred Name: {breed.name}</Text>
+        <Divider size="S" />
+        <Image src={breed.image.url} alt={breed.name} objectFit="cover" maxWidth="100%" />
+      </Flex>
+    );
+  }
+
   return (
-  <div key={`${breed.id}_${keyIndicator}_${idx}`}>
+  <Flex direction="column" alignContent='center' flex="1" key={`${breed.id}_${keyIndicator}_${idx}`}>
     <div className='row'>
       <Text UNSAFE_className="label">Bred Name</Text>
       <div>{ breed.name }</div>
@@ -35,5 +60,5 @@ export const BreedCardColumn = (props: BreedCardColumnPropsType) => {
       <Text UNSAFE_className="label">Origin</Text>
       <div>{ breed.origin }</div>
     </div>
-  </div>
+  </Flex>
 )};

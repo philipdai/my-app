@@ -2,8 +2,13 @@
   height: 100px;
   width: 200px;
   border:1px gray solid;
+  font-size: smaller;
 }
 
 .label {
   font-weight: bold;
+}
+
+Text {
+  padding: 10px;
 }

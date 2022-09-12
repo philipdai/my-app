@@ -1,6 +1,6 @@
 import { BreedType } from "./BreedTypes"
 
 export type CompareDialogPropsType = {
-  breeds: BreedType[]; 
+  allBreeds: BreedType[]; 
   comparedBreedIds: number[];
 }

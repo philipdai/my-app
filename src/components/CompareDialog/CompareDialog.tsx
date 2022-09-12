@@ -2,14 +2,21 @@ import './CompareDialog.css';
 import { DialogTrigger, ActionButton, Dialog, Heading, Flex, Divider, Text, Content } from "@adobe/react-spectrum";
 import { BreedCardColumn } from '../BreedCardColumn';
 import { BreedType, CompareDialogPropsType } from '../../types';
+import { useEffect, useState } from 'react';
 
 export const CompareDalog = (props: CompareDialogPropsType) => {
-  const { breeds, comparedBreedIds } = props;
+  const { comparedBreedIds, allBreeds } = props;
+  const [ uniqueComparedBreedIds, setUniqueComparedBreedIds ] = useState(comparedBreedIds);
+  useEffect(() => {
+    const uniqueSet = [...comparedBreedIds];
+    setUniqueComparedBreedIds([...uniqueSet]);
+  }, [ comparedBreedIds, allBreeds ]);
+
   return (
     <DialogTrigger isDismissable>
-        <ActionButton isDisabled={comparedBreedIds.length <= 1} margin="40px">Show Compared Breeds</ActionButton>
+        <ActionButton isDisabled={uniqueComparedBreedIds.length <= 1} margin="40px">Show Compared Breeds</ActionButton>
         {(close) => {
-          const comparedBreeds = breeds.filter((breed: BreedType) => comparedBreedIds.includes(breed.id));
+          const comparedBreeds = allBreeds.filter((breed: BreedType) => uniqueComparedBreedIds.includes(breed.id));
           return (
             <Dialog minWidth="1200px">
               <Heading>

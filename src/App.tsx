@@ -1,6 +1,6 @@
 import './App.css';
 import { Button, defaultTheme, Flex, Provider, View, Text } from '@adobe/react-spectrum';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { fetchBreeds } from './services';
 import { BreedCard, CompareDalog } from './components';
 import { BreedType } from './types';
